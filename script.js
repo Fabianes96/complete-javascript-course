@@ -78,6 +78,13 @@ const displayMovements = function(movements){
 
 displayMovements(account1.movements)
 
+const calcDisplayBalance = function(movements){
+  const balance = movements.reduce((acc,mov)=>{
+    return acc +mov;
+  },0)
+  labelBalance.textContent = `${balance} EUR`
+}
+
 const createUsernames = function (accs){
   accs.forEach((acc=>{
     acc.username = acc.owner
@@ -87,11 +94,12 @@ const createUsernames = function (accs){
     .join('');
   }))  
 }
-
-const user = "Steven Thomas Williams"; //stw
-
+calcDisplayBalance(account1.movements);
 createUsernames(accounts)
-console.log(accounts);
+
+
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -136,6 +144,6 @@ const checkDogs = (dogsJulia,dogsKate)=>{
               : console.log(`Dog number ${i+1} is still a puppy 🐶`);
   }) 
 }
-
+console.log("----------------CHALLENGE 1---------------------");
 checkDogs(data1,data2)
 checkDogs(data3,data4)
