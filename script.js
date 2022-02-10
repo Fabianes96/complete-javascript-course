@@ -159,8 +159,22 @@ btnTransfer.addEventListener("click", (e) => {
 
     updateUI(currentAcount)
   }
-
 });
+
+btnClose.addEventListener('click',(e)=>{
+  e.preventDefault();
+  if(inputCloseUsername.value === currentAcount.username && Number(inputClosePin.value) === currentAcount.pin){
+    const index = accounts.findIndex(acc => acc.username === currentAcount.username)
+    
+    //Delete account
+    accounts.splice(index,1);
+    
+    //Hide UI
+    containerApp.style.opacity = 0
+    
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
