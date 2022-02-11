@@ -59,3 +59,30 @@ class Car2 {
 }
 
 const ford = new Car2('Ford',120);
+
+
+//Inheritance between "classes"
+
+const Person = function(firtsName, birthYear){
+  this.firtsName = firtsName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function(){
+  console.log(2037 - this.birthYear);
+}
+
+const Student = function(firtsName,birthYear,course){
+  Person.call(this,firtsName,birthYear)
+  this.course = course
+} 
+
+//Linking prototypes
+Student.prototype = Object.create(Person.prototype)
+
+Student.prototype.introduce = function(){
+  console.log(`My name is ${this.firtsName} and I study ${this.course}`);
+}
+const mike = new Student('mike',2020, 'Computer Science');
+mike.introduce()
+
